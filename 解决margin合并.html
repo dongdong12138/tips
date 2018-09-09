@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>解决margin合并</title>
+  <style>
+    .demo {
+      border: 1px solid red;
+      height: 100px;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo"></div>
+  
+  <!-- 插入一个div，将border-top的width设置为0.1，让上下margin分开 -->
+  <div style="border-top: .1px solid green;"></div>  
+  
+  <div class="demo"></div>
+  
+  <!-- 将div以表格或flex形式显示，可以阻断margin合并 -->
+  <div style="display: table;"></div>
+  
+  <div class="demo"></div>
+</body>
+
+</html>
