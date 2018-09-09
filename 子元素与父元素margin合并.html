@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>子元素与父元素margin合并</title>
+  <style>
+    body {
+      border: 1px solid blue;
+    }
+    .dad {
+      outline: 5px solid red;
+      /* border-top: 1px solid yellow; */
+      /* padding: 1px 0; */
+      overflow: hidden;
+    }
+    .son {
+      border: 3px solid green;
+      margin: 10px;
+      padding: 10px;
+    }
+    
+    /*
+      子元素与父元素margin合并：
+         1、给父元素加border，与子元素隔开；
+         2、给父元素加padding，与子元素隔开；
+         3、给父元素加overflow：hidden；（不建议，这样一来子元素永远不能出父元素）
+    */
+  </style>
+</head>
+<body>
+  <div class="dad">
+    <div class="son">111</div>
+  </div>
+</body>
+</html>
