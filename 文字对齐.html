@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>文字对齐问题</title>
+  <style>
+    div {
+      border: 1px solid red;
+      font-size: 20px;
+    }
+    
+    span {
+      border: 1px solid green;
+      display: inline-block;
+      width: 4em;
+      text-align: justify;    
+      height: 20px;
+      line-height: 20px;
+      overflow: hidden;
+    }
+    span::after {              
+      content: "";
+      display: inline-block;
+      width: 100%;
+      border: 1px solid red;
+    }
+    
+    /*
+      原理：在span的后面加上一个inline-block，就成了多行文本，
+           text-align: justify 可以让多行文本两端对齐
+    */
+  </style>
+</head>
+<body>
+  <div>
+    <span>用户名</span>：<br>
+    <span>联系方式</span>：
+  </div>
+</body>
+</html>
