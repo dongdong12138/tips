@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>li的间隙问题</title>
+  <style>
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .clearfix::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+    ul {
+      border: 1px solid green;
+    }
+    ul li {
+      border: 1px solid red;
+      /* display: inline-block; */
+      
+      float: left;
+    }
+    /*
+      用inline-block会有间隙，所以不要用；
+      直接浮动就好了， 就不会有间隙；
+      浮动以后，父元素会塌陷，所以要给父元素加上 clearfix
+    */
+  </style>
+</head>
+<body>
+  <ul class="clearfix">
+    <li>选项1</li>
+    <li>选项2</li>
+    <li>选项3</li>
+    <li>选项4</li>
+  </ul>
+</body>
+</html>
