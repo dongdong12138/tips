@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>子元素宽度高度不确定做绝对居中-flex方法</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    .father {
+      border: 5px solid green;
+      height: 100vh;
+      box-sizing: border-box;
+      
+      /* 使用flex实现绝对居中 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .son {
+      /* 宽度高度都不确定的元素要绝对居中的做法 */
+      
+      border: 2px solid red;
+      padding: 10px;
+      
+      
+      word-break: break-all;
+    }
+  </style>
+</head>
+<body>
+  <div class="father">
+    <div class="son">
+      11sdfsfsadfsdfadfasfsfsasasaf1
+    </div>
+  </div>
+</body>
+</html>
