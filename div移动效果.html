@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>div移动</title>
+    <style>
+        #div1 {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+
+    <script>
+        div1.style.position = 'relative';
+        div1.style.left = 0;
+
+        var n = 0;
+        var id = setInterval(() => {
+            n++;
+            div1.style.left = n + 'px';
+            if (n >= 200) {
+                clearInterval(id);
+            }
+        }, 40);
+    </script>
+</body>
+
+</html>
