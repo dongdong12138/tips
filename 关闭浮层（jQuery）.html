@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta charset="utf-8">
+    <title>点击别处关闭浮层-jQuery方案1</title>
+    <style>
+        body {
+            background: #fff;
+        }
+
+        .popover {
+            border: 1px solid red;
+            position: absolute;
+            left: 60px;
+            top: 8px;
+            padding: 20px;
+            margin-left: 5px;
+            display: none;
+        }
+
+        .popover::before {
+            content: "";
+            position: absolute;
+            left: -20px;
+            top: 2px;
+            border: 10px solid transparent;
+            border-right: 10px solid red;
+        }
+
+        .popover::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: -19px;
+            border: 10px solid transparent;
+            border-right: 10px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" class="wrapper">
+        <button id="clickMe">点我</button>
+        <div class="popover" id="popover">
+            <input type="checkbox">浮层
+        </div>
+    </div>
+
+    <script>
+        // 这是一个节省内存的方案，不会在一开始就给document添加监听，而是点了按钮以后，再添加监听，并且只监听一次
+
+        $('#clickMe').on('click', function () {
+            $('#popover').show()
+            // 给document添加监听
+            $(document).one('click', function () { // 如果是on，在按钮被点击之后，会一直监听document
+                $('#popover').hide()
+                console.log(1)
+            })
+        })
+
+        // $('#wrapper').on('click', function (e) {
+        //   e.preventDefault()   // 阻止默认事件，这将导致input不能被选中
+        //   e.stopPropagation()   // 阻止传播
+        // })
+
+        // $('#wrapper').on('click', false) // 这与上面的代码是完全等价的，false等价于上面两句
+
+        // 如果没有给wrapper阻止冒泡，就会有bug，document的事件会被触发
+        $('#wrapper').on('click', function (e) {
+            e.stopPropagation()
+        })
+
+
+
+    </script>
+</body>
+
+</html>
