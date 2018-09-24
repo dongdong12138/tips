@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta charset="utf-8">
+    <title>事件冒泡动画演示</title>
+    <style>
+        .red.active {
+            background: red;
+        }
+
+        .orange.active {
+            background: orange;
+        }
+
+        .yellow.active {
+            background: yellow;
+        }
+
+        .green.active {
+            background: green;
+        }
+
+        .blue.active {
+            background: blue;
+        }
+
+        .purple.active {
+            background: purple;
+        }
+
+        .purple {
+            min-height: 170px;
+        }
+
+        div {
+            border: 1px solid black;
+            padding: 10px;
+            transition: all 1s;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="red">
+        <div class="orange">
+            <div class="yellow">
+                <div class="green">
+                    <div class="blue">
+                        <div class="purple"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var n = 0
+        $('div').on('click', function (e) {
+            setTimeout(function () {
+                $(e.currentTarget).addClass('active')
+            }, n * 1000)
+            n++
+        })
+    </script>
+</body>
+
+</html>
