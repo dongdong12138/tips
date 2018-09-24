@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta charset="utf-8">
+    <title>点击别处关闭浮层-jQuery方案2</title>
+    <style>
+        body {
+            background: #fff;
+        }
+
+        .popover {
+            border: 1px solid red;
+            position: absolute;
+            left: 60px;
+            top: 8px;
+            padding: 20px;
+            margin-left: 5px;
+            display: none;
+        }
+
+        .popover::before {
+            content: "";
+            position: absolute;
+            left: -20px;
+            top: 2px;
+            border: 10px solid transparent;
+            border-right: 10px solid red;
+        }
+
+        .popover::after {
+            content: "";
+            position: absolute;
+            top: 2px;
+            left: -19px;
+            border: 10px solid transparent;
+            border-right: 10px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper" class="wrapper">
+        <button id="clickMe">点我</button>
+        <div class="popover" id="popover">
+            <input type="checkbox">浮层
+        </div>
+    </div>
+
+    <script>
+        $('#clickMe').on('click', function () {
+            $('#popover').show()
+
+            // 让document等一会执行
+            setTimeout(function () {
+                $(document).one('click', function () {
+                    console.log('我后执行')
+                    $('#popover').hide()
+                })
+            }, 0)
+        })
+
+        // 冒泡过程中，上面的document点击事件不执行，而是执行下面的document
+        $(document).on('click', function () {
+            console.log('我先执行')
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
