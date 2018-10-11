@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>涟漪按钮</title>
+  <style>
+    button:focus {
+      outline: none;
+      background: #e5e5e5;
+    }
+    .frankButton {
+      border: none;
+      box-sizing: border-box;
+      width: 70px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 14px;
+      background: none;
+      transition: all 0.5s;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+      background: #e5e5e5;
+    }
+    .frankButton > .circle {
+      position: absolute;
+      background: #ccc;
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      margin-left: -5px;
+      margin-top: -5px;
+      transition: transform 0.5s;
+      visibility: hidden;
+      z-index: -1;
+      pointer-events: none; 
+    }
+    .frankButton .circle.active {
+      transform: scale(10);
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+  <button id="frankButton" class="frankButton">
+    按钮
+    <span class="circle"></span>
+  </button>
+  
+  <script>
+    frankButton.onclick = function () {
+      frankButton.querySelector('.circle').classList.add('active')
+    }
+    frankButton.querySelector('.circle').addEventListener('transitionend', function () {
+      frankButton.querySelector('.circle').classList.remove('active')
+    })
+  </script>
+</body>
+</html>
