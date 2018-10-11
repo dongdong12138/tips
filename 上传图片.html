@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    .imagePicker {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    .imagePicker img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+    .imagePicker input[type=file] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 1;
+      cursor: pointer;
+    }
+    .imagePicker .mask {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5);
+      color: #fff;
+    }
+    .imagePicker:hover .mask {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+<div class="imagePicker">
+  <img src="https://jirengu.com/data/upload/2017/0118/17/587f39fba695a.png" alt="">
+  <input type="file" name="" id="imageInput">
+  <div class="mask">编辑</div>
+</div>
+  
+  <script>
+    imageInput.onchange = function (e) {
+      let formData = new FormData()
+      formData.append('xxx', e.target.files[0])
+      $.ajax({
+        url: 'xxxx',
+        data: formData,
+        processData: false,
+        type: 'POST',
+        success: function ( formData ) {
+            alert( formData )
+        }
+      })
+      e.target.value = ''
+    }
+  </script>
+</body>
+</html>
